@@ -5,9 +5,11 @@ namespace UIToolkitWindowSystem
     public sealed class MessageBoxWindow : DialogWindow<DialogResult>
     {
         private readonly string _message;
+        private readonly VisualTreeAsset _uxml;
+
         private Button _okButton;
 
-        public MessageBoxWindow(string title, string message)
+        public MessageBoxWindow(string title, string message, VisualTreeAsset uxml)
             : base(new WindowOptions
             {
                 Title = title,
@@ -23,36 +25,27 @@ namespace UIToolkitWindowSystem
             })
         {
             _message = message;
+            _uxml = uxml;
+
             BuildDialogContent();
         }
 
         private void BuildDialogContent()
         {
-            ContentRoot.style.flexDirection = FlexDirection.Column;
-            ContentRoot.style.paddingLeft = 12;
-            ContentRoot.style.paddingRight = 12;
-            ContentRoot.style.paddingTop = 12;
-            ContentRoot.style.paddingBottom = 12;
+            var tree = CloneContentTree(_uxml);
+            ContentRoot.Add(tree);
 
-            var messageLabel = new Label(_message);
-            messageLabel.style.whiteSpace = WhiteSpace.Normal;
-            messageLabel.style.flexGrow = 1;
-            ContentRoot.Add(messageLabel);
+            var messageLabel = ContentRoot.Q<Label>("message-label");
+            _okButton = ContentRoot.Q<Button>("ok-button");
 
-            var buttonRow = new VisualElement();
-            buttonRow.style.flexDirection = FlexDirection.Row;
-            buttonRow.style.justifyContent = Justify.FlexEnd;
-            buttonRow.style.alignItems = Align.Center;
-            buttonRow.style.marginTop = 12;
+            if (messageLabel != null)
+                messageLabel.text = _message;
 
-            _okButton = new Button(() => Complete(DialogResult.OK))
+            if (_okButton != null)
             {
-                text = "OK"
-            };
-            _okButton.style.minWidth = 70;
-
-            buttonRow.Add(_okButton);
-            ContentRoot.Add(buttonRow);
+                _okButton.style.minWidth = 70;
+                _okButton.clicked += () => Complete(DialogResult.OK);
+            }
         }
 
         protected override bool TryHandleSubmitKey()

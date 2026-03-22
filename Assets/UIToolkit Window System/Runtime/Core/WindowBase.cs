@@ -162,6 +162,17 @@ namespace UIToolkitWindowSystem
             Root.style.width = width;
             Root.style.height = height;
         }
+
+        protected VisualElement CloneContentTree(VisualTreeAsset visualTreeAsset)
+        {
+            if (visualTreeAsset == null)
+            {
+                Debug.LogError($"{GetType().Name}: VisualTreeAsset is null.");
+                return new VisualElement();
+            }
+
+            return visualTreeAsset.CloneTree();
+        }
     }
 
     public class ModalWindowBase : WindowBase

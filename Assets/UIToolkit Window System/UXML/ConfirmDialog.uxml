@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement name="confirm-root" style="flex-grow: 1; flex-direction: column; padding-left: 12px; padding-right: 12px; padding-top: 12px; padding-bottom: 12px;">
+        <ui:Label name="message-label" text="Message" style="white-space: normal; flex-grow: 1;" />
+        <ui:VisualElement name="button-row" style="flex-direction: row; justify-content: flex-end; align-items: center; margin-top: 12px;">
+            <ui:Button name="yes-button" text="Yes" />
+            <ui:Button name="no-button" text="No" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

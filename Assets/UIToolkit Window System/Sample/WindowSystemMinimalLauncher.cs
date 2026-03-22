@@ -7,6 +7,7 @@ public sealed class WindowSystemMinimalLauncher : MonoBehaviour
 {
     [SerializeField] private UIDocument _uiDocument;
     [SerializeField] private StyleSheet _styleSheet;
+    [SerializeField] private WindowViewAssets _viewAssets;
 
     private WindowManager _windowManager;
     private WindowService _windowService;
@@ -19,6 +20,12 @@ public sealed class WindowSystemMinimalLauncher : MonoBehaviour
             return;
         }
 
+        if (_viewAssets == null)
+        {
+            Debug.LogError("WindowViewAssets is null");
+            return;
+        }
+
         var root = _uiDocument.rootVisualElement;
 
         if (_styleSheet != null)
@@ -26,32 +33,15 @@ public sealed class WindowSystemMinimalLauncher : MonoBehaviour
 
         var layers = new WindowLayerRoot(root);
         _windowManager = new WindowManager(layers);
-        _windowService = new WindowService(_windowManager);
+        _windowService = new WindowService(_windowManager, _viewAssets);
 
-        var windowA = new WindowBase(new WindowOptions
-        {
-            Title = "Window A",
-            Width = 420,
-            Height = 260,
-            Closable = true,
-            Draggable = true,
-            Resizable = true,
-            CloseOnEscape = true,
-            CenterOnOpen = true
-        });
-
-        _windowManager.Open(windowA);
+        var sampleWindow = new SampleToolWindow(_windowService, _viewAssets.SampleToolWindowUxml);
+        _windowManager.Open(sampleWindow);
 
         await UniTask.Yield();
 
         await _windowService.ShowMessageAsync(
-            "MessageBox",
-            "Enter で OK、ESC で Cancel です。");
-
-        var result = await _windowService.ShowConfirmAsync(
-            "Confirm",
-            "Enter で Yes、ESC で Cancel です。");
-
-        Debug.Log($"Confirm result = {result}");
+            "Ready",
+            "通常ウィンドウの中身も UXML 化しました。");
     }
 }

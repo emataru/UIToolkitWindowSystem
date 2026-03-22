@@ -502,6 +502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WindowSystemMinimalLauncher
   _uiDocument: {fileID: 1782278208}
   _styleSheet: {fileID: 7433441132597879392, guid: c1156e478473b433b97d28a083240c33, type: 3}
+  _viewAssets: {fileID: 11400000, guid: 2e2eda2e9dfad4dfa9f64ab8727114e8, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

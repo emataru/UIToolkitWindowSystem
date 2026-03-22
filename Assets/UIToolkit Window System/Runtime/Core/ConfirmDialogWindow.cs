@@ -5,10 +5,12 @@ namespace UIToolkitWindowSystem
     public sealed class ConfirmDialogWindow : DialogWindow<DialogResult>
     {
         private readonly string _message;
+        private readonly VisualTreeAsset _uxml;
+
         private Button _yesButton;
         private Button _noButton;
 
-        public ConfirmDialogWindow(string title, string message)
+        public ConfirmDialogWindow(string title, string message, VisualTreeAsset uxml)
             : base(new WindowOptions
             {
                 Title = title,
@@ -24,43 +26,34 @@ namespace UIToolkitWindowSystem
             })
         {
             _message = message;
+            _uxml = uxml;
+
             BuildDialogContent();
         }
 
         private void BuildDialogContent()
         {
-            ContentRoot.style.flexDirection = FlexDirection.Column;
-            ContentRoot.style.paddingLeft = 12;
-            ContentRoot.style.paddingRight = 12;
-            ContentRoot.style.paddingTop = 12;
-            ContentRoot.style.paddingBottom = 12;
+            var tree = CloneContentTree(_uxml);
+            ContentRoot.Add(tree);
 
-            var messageLabel = new Label(_message);
-            messageLabel.style.whiteSpace = WhiteSpace.Normal;
-            messageLabel.style.flexGrow = 1;
-            ContentRoot.Add(messageLabel);
+            var messageLabel = ContentRoot.Q<Label>("message-label");
+            _yesButton = ContentRoot.Q<Button>("yes-button");
+            _noButton = ContentRoot.Q<Button>("no-button");
 
-            var buttonRow = new VisualElement();
-            buttonRow.style.flexDirection = FlexDirection.Row;
-            buttonRow.style.justifyContent = Justify.FlexEnd;
-            buttonRow.style.alignItems = Align.Center;
-            buttonRow.style.marginTop = 12;
+            if (messageLabel != null)
+                messageLabel.text = _message;
 
-            _yesButton = new Button(() => Complete(DialogResult.Yes))
+            if (_yesButton != null)
             {
-                text = "Yes"
-            };
-            _yesButton.style.minWidth = 70;
+                _yesButton.style.minWidth = 70;
+                _yesButton.clicked += () => Complete(DialogResult.Yes);
+            }
 
-            _noButton = new Button(() => Complete(DialogResult.No))
+            if (_noButton != null)
             {
-                text = "No"
-            };
-            _noButton.style.minWidth = 70;
-
-            buttonRow.Add(_yesButton);
-            buttonRow.Add(_noButton);
-            ContentRoot.Add(buttonRow);
+                _noButton.style.minWidth = 70;
+                _noButton.clicked += () => Complete(DialogResult.No);
+            }
         }
 
         protected override bool TryHandleSubmitKey()
