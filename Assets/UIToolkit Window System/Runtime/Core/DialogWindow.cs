@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 
 namespace UIToolkitWindowSystem
 {
-    public abstract class DialogWindow<TResult> : ModalWindowBase
+    public abstract class DialogWindow<TResult> : ModalWindowBase, IDialogSubmitHandler
     {
         private UniTaskCompletionSource<TResult> _tcs;
         private bool _completed;

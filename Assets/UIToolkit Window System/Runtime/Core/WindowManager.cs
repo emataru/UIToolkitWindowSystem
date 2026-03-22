@@ -202,8 +202,20 @@ namespace UIToolkitWindowSystem
             return false;
         }
 
+        private bool TrySubmitFocusedDialog()
+        {
+            if (FocusedWindow is IDialogSubmitHandler submitHandler)
+            {
+                return submitHandler.TrySubmitByKeyboard();
+            }
+
+            return false;
+        }
+
         private void OnKeyDown(KeyDownEvent evt)
         {
+            Debug.Log($"KeyDown: {evt.keyCode}, focused={FocusedWindow?.Options.Title}");
+
             if (evt.keyCode == KeyCode.Escape)
             {
                 if (TryCloseByEscape())
@@ -222,19 +234,6 @@ namespace UIToolkitWindowSystem
                     evt.PreventDefault();
                 }
             }
-        }
-
-        private bool TrySubmitFocusedDialog()
-        {
-            if (FocusedWindow == null)
-                return false;
-
-            if (FocusedWindow is DialogWindow<DialogResult> dialogResultWindow)
-            {
-                return dialogResultWindow.TrySubmitByKeyboard();
-            }
-
-            return false;
         }
 
         private void ApplyOpenPlacement(WindowBase window)
@@ -262,7 +261,7 @@ namespace UIToolkitWindowSystem
 
             foreach (var window in pending)
             {
-                if (window.IsOpen == false && window.Root.parent == null)
+                if (!window.IsOpen && window.Root.parent == null)
                     continue;
 
                 if (!TryCenterWindow(window))

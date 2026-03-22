@@ -13,8 +13,6 @@ public sealed class WindowSystemMinimalLauncher : MonoBehaviour
 
     private async void Start()
     {
-        Debug.Log("WindowSystemMinimalLauncher.Start");
-
         if (_uiDocument == null)
         {
             Debug.LogError("UIDocument is null");
@@ -24,57 +22,35 @@ public sealed class WindowSystemMinimalLauncher : MonoBehaviour
         var root = _uiDocument.rootVisualElement;
 
         if (_styleSheet != null)
-        {
             root.styleSheets.Add(_styleSheet);
-            Debug.Log("StyleSheet added");
-        }
 
         var layers = new WindowLayerRoot(root);
         _windowManager = new WindowManager(layers);
         _windowService = new WindowService(_windowManager);
 
-        var centeredWindow = new WindowBase(new WindowOptions
+        var windowA = new WindowBase(new WindowOptions
         {
-            Title = "Centered Window",
+            Title = "Window A",
             Width = 420,
             Height = 260,
             Closable = true,
             Draggable = true,
             Resizable = true,
-            MinWidth = 240,
-            MinHeight = 160,
             CloseOnEscape = true,
             CenterOnOpen = true
         });
 
-        var fixedWindow = new WindowBase(new WindowOptions
-        {
-            Title = "Fixed Window",
-            Width = 360,
-            Height = 220,
-            Left = 80,
-            Top = 70,
-            Closable = true,
-            Draggable = true,
-            Resizable = true,
-            MinWidth = 220,
-            MinHeight = 140,
-            CloseOnEscape = true,
-            CenterOnOpen = false
-        });
-
-        _windowManager.Open(fixedWindow);
-        _windowManager.Open(centeredWindow);
+        _windowManager.Open(windowA);
 
         await UniTask.Yield();
 
         await _windowService.ShowMessageAsync(
-            "Centered MessageBox",
-            "この MessageBox は中央表示です。");
+            "MessageBox",
+            "Enter で OK、ESC で Cancel です。");
 
         var result = await _windowService.ShowConfirmAsync(
-            "Centered Confirm",
-            "この ConfirmDialog も中央表示です。");
+            "Confirm",
+            "Enter で Yes、ESC で Cancel です。");
 
         Debug.Log($"Confirm result = {result}");
     }
