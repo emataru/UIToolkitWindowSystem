@@ -1,0 +1,11 @@
+.unity-box {
+    background-color: rgb(48, 48, 48);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgb(72, 72, 72);
+    border-right-color: rgb(72, 72, 72);
+    border-top-color: rgb(72, 72, 72);
+    border-bottom-color: rgb(72, 72, 72);
+}
