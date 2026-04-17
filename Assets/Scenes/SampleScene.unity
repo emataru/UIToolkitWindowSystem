@@ -442,7 +442,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1782278209}
   - component: {fileID: 1782278208}
-  - component: {fileID: 1782278210}
+  - component: {fileID: 1782278213}
+  - component: {fileID: 1782278212}
+  - component: {fileID: 1782278211}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -488,7 +490,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1782278210
+--- !u!114 &1782278211
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -497,12 +499,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 1782278207}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 503d92eeed3534e0d9fef7e54c952e75, type: 3}
+  m_Script: {fileID: 11500000, guid: a3ce8080f7801724483dc6fe2099f7ed, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WindowSystemMinimalLauncher
-  _uiDocument: {fileID: 1782278208}
-  _commonViews: {fileID: 11400000, guid: a6d2f1971a22ba04b8c8658191402d8e, type: 2}
-  _sampleToolWindowView: {fileID: 11400000, guid: 2a792801bbaf63b408e9b11c15730265, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::UIToolkitWindowSystem.DialogDemoController
+  host: {fileID: 1782278213}
+  showReadyDialogOnStart: 0
+--- !u!114 &1782278212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782278207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e9e5211558ffc144841561a5f19ff68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIToolkitWindowSystem.SampleToolWindowController
+  host: {fileID: 1782278213}
+  sampleToolWindowView: {fileID: 11400000, guid: 2a792801bbaf63b408e9b11c15730265, type: 2}
+  openOnStart: 1
+--- !u!114 &1782278213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782278207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d1457bca7e283d49b5a515a57e1b5a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIToolkitWindowSystem.WindowSystemHost
+  uiDocument: {fileID: 1782278208}
+  commonViews: {fileID: 11400000, guid: a6d2f1971a22ba04b8c8658191402d8e, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
