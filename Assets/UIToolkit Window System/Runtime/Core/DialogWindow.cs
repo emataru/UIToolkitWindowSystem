@@ -1,5 +1,6 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using UnityEngine.UIElements;
 
 namespace UIToolkitWindowSystem
 {
@@ -8,7 +9,8 @@ namespace UIToolkitWindowSystem
         private UniTaskCompletionSource<TResult> _tcs;
         private bool _completed;
 
-        protected DialogWindow(WindowOptions options) : base(options)
+        protected DialogWindow(WindowOptions options, VisualTreeAsset frameUxml)
+            : base(options, frameUxml)
         {
         }
 

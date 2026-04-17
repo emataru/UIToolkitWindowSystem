@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement name="sample-root" style="flex-grow: 1; flex-direction: column; padding-left: 12px; padding-right: 12px; padding-top: 12px; padding-bottom: 12px;">
+        <ui:Label name="header-label" text="Sample Tool Window" style="unity-font-style: bold; font-size: 15px;" />
+        <ui:Label name="description-label"
+                  text="これは WindowFrame.uxml の content-root に差し込まれた UXML です。"
+                  style="white-space: normal; margin-top: 6px;" />
+
+        <ui:TextField name="name-field" label="Name" value="Wataru" style="margin-top: 10px;" />
+        <ui:Toggle name="danger-toggle" label="Enable Dangerous Action" value="true" style="margin-top: 6px;" />
+
+        <ui:VisualElement name="button-row" style="flex-direction: row; margin-top: 12px;">
+            <ui:Button name="message-button" text="Show Message" />
+            <ui:Button name="confirm-button" text="Show Confirm" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

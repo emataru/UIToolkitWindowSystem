@@ -23,13 +23,35 @@ namespace UIToolkitWindowSystem
         private readonly WindowDragManipulator _dragManipulator;
         private readonly WindowResizeManipulator _resizeManipulator;
 
-        public WindowBase(WindowOptions options)
+        public WindowBase(WindowOptions options, VisualTreeAsset frameUxml)
         {
             Options = options ?? throw new ArgumentNullException(nameof(options));
+            if (frameUxml == null) throw new ArgumentNullException(nameof(frameUxml));
 
-            Root = new VisualElement();
+            // Ç‹Ç∏ CloneTree Ç∑ÇÈ
+            var tree = frameUxml.CloneTree();
+
+            // é¿ç€ÇÃÉEÉBÉìÉhÉEñ{ëÃÇéÊìæ
+            Root = tree.Q<VisualElement>("window-root");
+            if (Root == null)
+            {
+                throw new InvalidOperationException("WindowFrame.uxml must contain 'window-root'.");
+            }
+
             Root.name = $"window-{Id}";
-            Root.AddToClassList("window");
+
+            TitleBar = Root.Q<VisualElement>("title-bar");
+            TitleLabel = Root.Q<Label>("title-label");
+            CloseButton = Root.Q<Button>("close-button");
+            ContentRoot = Root.Q<VisualElement>("content-root");
+            ResizeHandle = Root.Q<VisualElement>("resize-handle");
+
+            if (TitleBar == null || TitleLabel == null || CloseButton == null || ContentRoot == null || ResizeHandle == null)
+            {
+                throw new InvalidOperationException(
+                    "WindowFrame.uxml must contain title-bar, title-label, close-button, content-root, resize-handle.");
+            }
+
             Root.style.position = Position.Absolute;
             Root.style.left = options.Left;
             Root.style.top = options.Top;
@@ -37,51 +59,13 @@ namespace UIToolkitWindowSystem
             Root.style.height = options.Height;
             Root.style.minWidth = options.MinWidth;
             Root.style.minHeight = options.MinHeight;
-            Root.style.display = DisplayStyle.Flex;
-            Root.style.flexDirection = FlexDirection.Column;
 
-            TitleBar = new VisualElement();
-            TitleBar.name = "title-bar";
-            TitleBar.AddToClassList("window-titlebar");
-
-            TitleLabel = new Label(options.Title);
-            TitleLabel.name = "title-label";
-            TitleLabel.AddToClassList("window-title");
-
-            var spacer = new VisualElement();
-            spacer.style.flexGrow = 1f;
-
-            CloseButton = new Button(() =>
-            {
-                Debug.Log($"Close clicked: {Options.Title}");
-                RequestClose();
-            })
-            {
-                text = "√ó"
-            };
-            CloseButton.name = "close-button";
-            CloseButton.AddToClassList("window-close-button");
+            TitleLabel.text = options.Title;
             CloseButton.style.display = options.Closable ? DisplayStyle.Flex : DisplayStyle.None;
-
-            TitleBar.Add(TitleLabel);
-            TitleBar.Add(spacer);
-            TitleBar.Add(CloseButton);
-
-            ContentRoot = new VisualElement();
-            ContentRoot.name = "content-root";
-            ContentRoot.AddToClassList("window-content");
-            ContentRoot.style.flexGrow = 1f;
-
-            ResizeHandle = new VisualElement();
-            ResizeHandle.name = "resize-handle";
-            ResizeHandle.AddToClassList("window-resize-handle");
             ResizeHandle.style.display = options.Resizable ? DisplayStyle.Flex : DisplayStyle.None;
 
-            Root.Add(TitleBar);
-            Root.Add(ContentRoot);
-            Root.Add(ResizeHandle);
-
-            Root.RegisterCallback<PointerDownEvent>(OnPointerDownWindow);
+            CloseButton.clicked += RequestClose;
+            Root.RegisterCallback<PointerDownEvent>(_ => Manager?.Focus(this));
 
             if (options.Draggable)
             {
@@ -98,9 +82,26 @@ namespace UIToolkitWindowSystem
             }
         }
 
-        private void OnPointerDownWindow(PointerDownEvent evt)
+        protected VisualElement CloneContentTree(VisualTreeAsset visualTreeAsset)
         {
-            Manager?.Focus(this);
+            if (visualTreeAsset == null)
+                throw new ArgumentNullException(nameof(visualTreeAsset));
+
+            return visualTreeAsset.CloneTree();
+        }
+
+        protected void AddContentStyleSheets(params StyleSheet[] styleSheets)
+        {
+            if (styleSheets == null)
+                return;
+
+            foreach (var sheet in styleSheets)
+            {
+                if (sheet != null && !Root.styleSheets.Contains(sheet))
+                {
+                    Root.styleSheets.Add(sheet);
+                }
+            }
         }
 
         internal void Attach(WindowManager manager)
@@ -111,23 +112,13 @@ namespace UIToolkitWindowSystem
         internal void InternalOpen()
         {
             IsOpen = true;
-            Debug.Log($"Window opened: {Options.Title}");
             OnOpened();
         }
 
         internal void InternalClose()
         {
             IsOpen = false;
-            Debug.Log($"Window closed: {Options.Title}");
             OnClosed();
-        }
-
-        protected virtual void OnOpened()
-        {
-        }
-
-        protected virtual void OnClosed()
-        {
         }
 
         internal void InternalSetFocused(bool focused)
@@ -141,14 +132,6 @@ namespace UIToolkitWindowSystem
                 Root.AddToClassList("focused");
             else
                 Root.RemoveFromClassList("focused");
-
-            Debug.Log($"Focus changed: {Options.Title} => {focused}");
-        }
-
-        public virtual void RequestClose()
-        {
-            Debug.Log($"RequestClose: {Options.Title}, manager={(Manager != null)}");
-            Manager?.Close(this);
         }
 
         public void SetPosition(float x, float y)
@@ -163,21 +146,16 @@ namespace UIToolkitWindowSystem
             Root.style.height = height;
         }
 
-        protected VisualElement CloneContentTree(VisualTreeAsset visualTreeAsset)
+        public virtual void RequestClose()
         {
-            if (visualTreeAsset == null)
-            {
-                Debug.LogError($"{GetType().Name}: VisualTreeAsset is null.");
-                return new VisualElement();
-            }
-
-            return visualTreeAsset.CloneTree();
+            Manager?.Close(this);
         }
-    }
 
-    public class ModalWindowBase : WindowBase
-    {
-        public ModalWindowBase(WindowOptions options) : base(options)
+        protected virtual void OnOpened()
+        {
+        }
+
+        protected virtual void OnClosed()
         {
         }
     }

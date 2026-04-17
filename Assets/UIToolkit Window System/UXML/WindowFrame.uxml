@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement name="window-root" class="window">
+        <ui:VisualElement name="title-bar" class="window-titlebar">
+            <ui:Label name="title-label" class="window-title" text="Window" />
+            <ui:VisualElement name="title-spacer" class="window-title-spacer" />
+            <ui:Button name="close-button" class="window-close-button" text="×" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="content-root" class="window-content" />
+
+        <ui:VisualElement name="resize-handle" class="window-resize-handle" />
+    </ui:VisualElement>
+</ui:UXML>

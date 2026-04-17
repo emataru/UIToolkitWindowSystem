@@ -1,16 +1,7 @@
-.window-layer {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-}
-
 .window {
     position: absolute;
     display: flex;
     flex-direction: column;
-
     background-color: rgb(38, 38, 38);
     color: rgb(230, 230, 230);
 
@@ -43,13 +34,15 @@
 }
 
 .window-title {
-    color: rgb(240, 240, 240);
     unity-font-style: bold;
+}
+
+.window-title-spacer {
+    flex-grow: 1;
 }
 
 .window-content {
     flex-grow: 1;
-    background-color: rgb(46, 46, 46);
 }
 
 .window-close-button {

@@ -464,7 +464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
   m_PanelSettings: {fileID: 11400000, guid: 0c6aecdf010404e908be0143810cf3e7, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 716d81984c4135b4c9070e61ed57f8e2, type: 3}
   m_SortingOrder: 0
   m_Position: 0
   m_WorldSpaceSizeMode: 1
@@ -501,8 +501,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WindowSystemMinimalLauncher
   _uiDocument: {fileID: 1782278208}
-  _styleSheet: {fileID: 7433441132597879392, guid: c1156e478473b433b97d28a083240c33, type: 3}
-  _viewAssets: {fileID: 11400000, guid: 2e2eda2e9dfad4dfa9f64ab8727114e8, type: 2}
+  _commonViews: {fileID: 11400000, guid: a6d2f1971a22ba04b8c8658191402d8e, type: 2}
+  _sampleToolWindowView: {fileID: 11400000, guid: 2a792801bbaf63b408e9b11c15730265, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

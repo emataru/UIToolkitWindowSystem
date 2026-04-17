@@ -5,12 +5,16 @@ namespace UIToolkitWindowSystem
     public sealed class ConfirmDialogWindow : DialogWindow<DialogResult>
     {
         private readonly string _message;
-        private readonly VisualTreeAsset _uxml;
+        private readonly VisualTreeAsset _contentUxml;
 
         private Button _yesButton;
         private Button _noButton;
 
-        public ConfirmDialogWindow(string title, string message, VisualTreeAsset uxml)
+        public ConfirmDialogWindow(
+            string title,
+            string message,
+            VisualTreeAsset frameUxml,
+            VisualTreeAsset contentUxml)
             : base(new WindowOptions
             {
                 Title = title,
@@ -23,17 +27,17 @@ namespace UIToolkitWindowSystem
                 Resizable = false,
                 CloseOnEscape = true,
                 CenterOnOpen = true
-            })
+            }, frameUxml)
         {
             _message = message;
-            _uxml = uxml;
+            _contentUxml = contentUxml;
 
             BuildDialogContent();
         }
 
         private void BuildDialogContent()
         {
-            var tree = CloneContentTree(_uxml);
+            var tree = CloneContentTree(_contentUxml);
             ContentRoot.Add(tree);
 
             var messageLabel = ContentRoot.Q<Label>("message-label");
@@ -44,16 +48,10 @@ namespace UIToolkitWindowSystem
                 messageLabel.text = _message;
 
             if (_yesButton != null)
-            {
-                _yesButton.style.minWidth = 70;
                 _yesButton.clicked += () => Complete(DialogResult.Yes);
-            }
 
             if (_noButton != null)
-            {
-                _noButton.style.minWidth = 70;
                 _noButton.clicked += () => Complete(DialogResult.No);
-            }
         }
 
         protected override bool TryHandleSubmitKey()

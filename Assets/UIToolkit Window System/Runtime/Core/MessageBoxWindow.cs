@@ -5,11 +5,15 @@ namespace UIToolkitWindowSystem
     public sealed class MessageBoxWindow : DialogWindow<DialogResult>
     {
         private readonly string _message;
-        private readonly VisualTreeAsset _uxml;
+        private readonly VisualTreeAsset _contentUxml;
 
         private Button _okButton;
 
-        public MessageBoxWindow(string title, string message, VisualTreeAsset uxml)
+        public MessageBoxWindow(
+            string title,
+            string message,
+            VisualTreeAsset frameUxml,
+            VisualTreeAsset contentUxml)
             : base(new WindowOptions
             {
                 Title = title,
@@ -22,17 +26,17 @@ namespace UIToolkitWindowSystem
                 Resizable = false,
                 CloseOnEscape = true,
                 CenterOnOpen = true
-            })
+            }, frameUxml)
         {
             _message = message;
-            _uxml = uxml;
+            _contentUxml = contentUxml;
 
             BuildDialogContent();
         }
 
         private void BuildDialogContent()
         {
-            var tree = CloneContentTree(_uxml);
+            var tree = CloneContentTree(_contentUxml);
             ContentRoot.Add(tree);
 
             var messageLabel = ContentRoot.Q<Label>("message-label");
@@ -43,7 +47,6 @@ namespace UIToolkitWindowSystem
 
             if (_okButton != null)
             {
-                _okButton.style.minWidth = 70;
                 _okButton.clicked += () => Complete(DialogResult.OK);
             }
         }
