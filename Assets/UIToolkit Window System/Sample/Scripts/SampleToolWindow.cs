@@ -5,7 +5,7 @@ namespace UIToolkitWindowSystem
 {
     public sealed class SampleToolWindow : WindowBase
     {
-        private readonly WindowService _windowService;
+        private readonly WindowContext _context;
         private readonly VisualTreeAsset _contentUxml;
 
         private TextField _nameField;
@@ -14,8 +14,7 @@ namespace UIToolkitWindowSystem
         private Button _confirmButton;
 
         public SampleToolWindow(
-            WindowService windowService,
-            VisualTreeAsset frameUxml,
+            WindowContext context,
             VisualTreeAsset contentUxml,
             params StyleSheet[] styleSheets)
             : base(new WindowOptions
@@ -28,11 +27,11 @@ namespace UIToolkitWindowSystem
                 Closable = true,
                 Draggable = true,
                 Resizable = true,
-                CloseOnEscape = false,
+                CloseOnEscape = true,
                 CenterOnOpen = true
-            }, frameUxml)
+            }, context.CommonViews.WindowFrameUxml)
         {
-            _windowService = windowService;
+            _context = context;
             _contentUxml = contentUxml;
 
             AddContentStyleSheets(styleSheets);
@@ -60,7 +59,7 @@ namespace UIToolkitWindowSystem
         {
             string name = _nameField?.value ?? "Player";
 
-            await _windowService.ShowMessageAsync(
+            await _context.WindowService.ShowMessageAsync(
                 "Hello",
                 $"こんにちは {name} さん。\nこれは通常ウィンドウから開いた MessageBox です。");
         }
@@ -72,17 +71,17 @@ namespace UIToolkitWindowSystem
 
             if (!enabled)
             {
-                await _windowService.ShowMessageAsync(
+                await _context.WindowService.ShowMessageAsync(
                     "Info",
                     "Enable Dangerous Action が OFF なので確認をスキップしました。");
                 return;
             }
 
-            var result = await _windowService.ShowConfirmAsync(
+            var result = await _context.WindowService.ShowConfirmAsync(
                 "Confirm",
                 $"{name} さん、危険な処理を実行しますか？");
 
-            await _windowService.ShowMessageAsync("Result", $"選択結果: {result}");
+            await _context.WindowService.ShowMessageAsync("Result", $"選択結果: {result}");
         }
 
         protected override void OnOpened()

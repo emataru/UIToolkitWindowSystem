@@ -1,17 +1,19 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using UnityEngine.UIElements;
 
 namespace UIToolkitWindowSystem
 {
     public abstract class DialogWindow<TResult> : ModalWindowBase, IDialogSubmitHandler
     {
+        protected WindowContext Context { get; }
+
         private UniTaskCompletionSource<TResult> _tcs;
         private bool _completed;
 
-        protected DialogWindow(WindowOptions options, VisualTreeAsset frameUxml)
-            : base(options, frameUxml)
+        protected DialogWindow(WindowContext context, WindowOptions options)
+            : base(options, context.CommonViews.WindowFrameUxml)
         {
+            Context = context;
         }
 
         public UniTask<TResult> WaitForResultAsync(CancellationToken cancellationToken = default)

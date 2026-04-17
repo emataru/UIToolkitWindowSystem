@@ -5,13 +5,11 @@ namespace UIToolkitWindowSystem
 {
     public sealed class WindowService
     {
-        private readonly WindowManager _windowManager;
-        private readonly CommonWindowViewAssets _commonViews;
+        private readonly WindowContext _context;
 
-        public WindowService(WindowManager windowManager, CommonWindowViewAssets commonViews)
+        public WindowService(WindowContext context)
         {
-            _windowManager = windowManager;
-            _commonViews = commonViews;
+            _context = context;
         }
 
         public async UniTask<DialogResult> ShowMessageAsync(
@@ -19,13 +17,8 @@ namespace UIToolkitWindowSystem
             string message,
             CancellationToken cancellationToken = default)
         {
-            var dialog = new MessageBoxWindow(
-                title,
-                message,
-                _commonViews.WindowFrameUxml,
-                _commonViews.MessageBoxContentUxml);
-
-            _windowManager.OpenModal(dialog);
+            var dialog = new MessageBoxWindow(_context, title, message);
+            _context.WindowManager.OpenModal(dialog);
             return await dialog.WaitForResultAsync(cancellationToken);
         }
 
@@ -34,13 +27,8 @@ namespace UIToolkitWindowSystem
             string message,
             CancellationToken cancellationToken = default)
         {
-            var dialog = new ConfirmDialogWindow(
-                title,
-                message,
-                _commonViews.WindowFrameUxml,
-                _commonViews.ConfirmDialogContentUxml);
-
-            _windowManager.OpenModal(dialog);
+            var dialog = new ConfirmDialogWindow(_context, title, message);
+            _context.WindowManager.OpenModal(dialog);
             return await dialog.WaitForResultAsync(cancellationToken);
         }
 

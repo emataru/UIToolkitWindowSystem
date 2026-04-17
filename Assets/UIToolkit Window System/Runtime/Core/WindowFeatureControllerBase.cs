@@ -7,6 +7,7 @@ namespace UIToolkitWindowSystem
         [SerializeField] private WindowSystemHost host;
 
         protected WindowSystemHost Host => host;
+        protected WindowContext Context => host != null ? host.Context : null;
         protected WindowManager WindowManager => host != null ? host.WindowManager : null;
         protected WindowService WindowService => host != null ? host.WindowService : null;
         protected CommonWindowViewAssets CommonViews => host != null ? host.CommonViews : null;

@@ -27,47 +27,24 @@ namespace UIToolkitWindowSystem
                 return;
             }
 
-            if (WindowManager == null || WindowService == null || CommonViews == null)
+            if (Context == null)
             {
-                Debug.LogError("SampleToolWindowController: Window system is not ready.");
-                return;
-            }
-
-            if (CommonViews.WindowFrameUxml == null)
-            {
-                Debug.LogError("SampleToolWindowController: Common WindowFrameUxml is not assigned.");
+                Debug.LogError("SampleToolWindowController: Window context is not ready.");
                 return;
             }
 
             if (_window != null && _window.IsOpen)
             {
-                WindowManager.Focus(_window);
+                Context.WindowManager.Focus(_window);
                 return;
             }
 
             _window = new SampleToolWindow(
-                WindowService,
-                CommonViews.WindowFrameUxml,
+                Context,
                 sampleToolContentUxml,
                 sampleToolStyleSheets);
 
-            WindowManager.Open(_window);
-        }
-
-        public void CloseSampleWindow()
-        {
-            if (_window != null && _window.IsOpen)
-            {
-                _window.RequestClose();
-            }
-        }
-
-        public void FocusSampleWindow()
-        {
-            if (_window != null && _window.IsOpen)
-            {
-                WindowManager.Focus(_window);
-            }
+            Context.WindowManager.Open(_window);
         }
     }
 }

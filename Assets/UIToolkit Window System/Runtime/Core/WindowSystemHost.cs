@@ -12,6 +12,8 @@ namespace UIToolkitWindowSystem
 
         public WindowManager WindowManager { get; private set; }
         public WindowService WindowService { get; private set; }
+        public WindowContext Context { get; private set; }
+
         public CommonWindowViewAssets CommonViews => commonViews;
         public UIDocument UIDocument => uiDocument;
         public VisualElement Root => uiDocument != null ? uiDocument.rootVisualElement : null;
@@ -48,7 +50,10 @@ namespace UIToolkitWindowSystem
 
             _layers = new WindowLayerRoot(root);
             WindowManager = new WindowManager(_layers);
-            WindowService = new WindowService(WindowManager, commonViews);
+
+            Context = new WindowContext(WindowManager, commonViews);
+            WindowService = new WindowService(Context);
+            Context.WindowService = WindowService;
 
             Debug.Log("WindowSystemHost initialized.");
         }

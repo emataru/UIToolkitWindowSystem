@@ -5,17 +5,11 @@ namespace UIToolkitWindowSystem
     public sealed class ConfirmDialogWindow : DialogWindow<DialogResult>
     {
         private readonly string _message;
-        private readonly VisualTreeAsset _contentUxml;
-
         private Button _yesButton;
         private Button _noButton;
 
-        public ConfirmDialogWindow(
-            string title,
-            string message,
-            VisualTreeAsset frameUxml,
-            VisualTreeAsset contentUxml)
-            : base(new WindowOptions
+        public ConfirmDialogWindow(WindowContext context, string title, string message)
+            : base(context, new WindowOptions
             {
                 Title = title,
                 Width = 380,
@@ -27,17 +21,15 @@ namespace UIToolkitWindowSystem
                 Resizable = false,
                 CloseOnEscape = true,
                 CenterOnOpen = true
-            }, frameUxml)
+            })
         {
             _message = message;
-            _contentUxml = contentUxml;
-
             BuildDialogContent();
         }
 
         private void BuildDialogContent()
         {
-            var tree = CloneContentTree(_contentUxml);
+            var tree = CloneContentTree(Context.CommonViews.ConfirmDialogContentUxml);
             ContentRoot.Add(tree);
 
             var messageLabel = ContentRoot.Q<Label>("message-label");
