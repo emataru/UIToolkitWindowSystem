@@ -5,7 +5,7 @@ namespace UIToolkitWindowSystem
 {
     public sealed class SampleToolWindowController : WindowFeatureControllerBase
     {
-        [SerializeField] private bool openOnStart = true;
+        [SerializeField] private bool openOnStart = false;
         [SerializeField] private VisualTreeAsset sampleToolContentUxml;
         [SerializeField] private StyleSheet[] sampleToolStyleSheets;
 
@@ -45,6 +45,22 @@ namespace UIToolkitWindowSystem
                 sampleToolStyleSheets);
 
             Context.WindowManager.Open(_window);
+        }
+
+        public void FocusSampleWindow()
+        {
+            if (_window != null && _window.IsOpen)
+            {
+                Context.WindowManager.Focus(_window);
+            }
+        }
+
+        public void CloseSampleWindow()
+        {
+            if (_window != null && _window.IsOpen)
+            {
+                _window.RequestClose();
+            }
         }
     }
 }

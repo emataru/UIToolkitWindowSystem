@@ -27,7 +27,7 @@ namespace UIToolkitWindowSystem
                 Closable = true,
                 Draggable = true,
                 Resizable = true,
-                CloseOnEscape = true,
+                CloseOnEscape = false,
                 CenterOnOpen = true
             }, context.CommonViews.WindowFrameUxml)
         {
