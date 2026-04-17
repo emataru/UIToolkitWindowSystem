@@ -1,11 +1,13 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace UIToolkitWindowSystem
 {
     public sealed class SampleToolWindowController : WindowFeatureControllerBase
     {
-        [SerializeField] private SampleToolWindowViewAsset sampleToolWindowView;
         [SerializeField] private bool openOnStart = true;
+        [SerializeField] private VisualTreeAsset sampleToolContentUxml;
+        [SerializeField] private StyleSheet[] sampleToolStyleSheets;
 
         private SampleToolWindow _window;
 
@@ -19,15 +21,21 @@ namespace UIToolkitWindowSystem
 
         public void OpenSampleWindow()
         {
-            if (sampleToolWindowView == null)
+            if (sampleToolContentUxml == null)
             {
-                Debug.LogError("SampleToolWindowController: SampleToolWindowViewAsset is not assigned.");
+                Debug.LogError("SampleToolWindowController: content UXML is not assigned.");
                 return;
             }
 
             if (WindowManager == null || WindowService == null || CommonViews == null)
             {
                 Debug.LogError("SampleToolWindowController: Window system is not ready.");
+                return;
+            }
+
+            if (CommonViews.WindowFrameUxml == null)
+            {
+                Debug.LogError("SampleToolWindowController: Common WindowFrameUxml is not assigned.");
                 return;
             }
 
@@ -40,7 +48,8 @@ namespace UIToolkitWindowSystem
             _window = new SampleToolWindow(
                 WindowService,
                 CommonViews.WindowFrameUxml,
-                sampleToolWindowView);
+                sampleToolContentUxml,
+                sampleToolStyleSheets);
 
             WindowManager.Open(_window);
         }

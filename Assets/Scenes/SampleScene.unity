@@ -445,6 +445,7 @@ GameObject:
   - component: {fileID: 1782278213}
   - component: {fileID: 1782278212}
   - component: {fileID: 1782278211}
+  - component: {fileID: 1782278214}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -517,8 +518,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIToolkitWindowSystem.SampleToolWindowController
   host: {fileID: 1782278213}
-  sampleToolWindowView: {fileID: 11400000, guid: 2a792801bbaf63b408e9b11c15730265, type: 2}
   openOnStart: 1
+  sampleToolContentUxml: {fileID: 9197481963319205126, guid: d15e1fbc1cdebbf43a633a9fdbb227da, type: 3}
+  sampleToolStyleSheets: []
 --- !u!114 &1782278213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,6 +535,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIToolkitWindowSystem.WindowSystemHost
   uiDocument: {fileID: 1782278208}
   commonViews: {fileID: 11400000, guid: a6d2f1971a22ba04b8c8658191402d8e, type: 2}
+--- !u!114 &1782278214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782278207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e9e5211558ffc144841561a5f19ff68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIToolkitWindowSystem.SampleToolWindowController
+  host: {fileID: 1782278213}
+  openOnStart: 1
+  sampleToolContentUxml: {fileID: 9197481963319205126, guid: d15e1fbc1cdebbf43a633a9fdbb227da, type: 3}
+  sampleToolStyleSheets: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -16,7 +16,8 @@ namespace UIToolkitWindowSystem
         public SampleToolWindow(
             WindowService windowService,
             VisualTreeAsset frameUxml,
-            SampleToolWindowViewAsset viewAsset)
+            VisualTreeAsset contentUxml,
+            params StyleSheet[] styleSheets)
             : base(new WindowOptions
             {
                 Title = "Sample Tool Window",
@@ -32,9 +33,9 @@ namespace UIToolkitWindowSystem
             }, frameUxml)
         {
             _windowService = windowService;
-            _contentUxml = viewAsset.ContentUxml;
+            _contentUxml = contentUxml;
 
-            AddContentStyleSheets(viewAsset.StyleSheets);
+            AddContentStyleSheets(styleSheets);
             BuildWindowContent();
         }
 
