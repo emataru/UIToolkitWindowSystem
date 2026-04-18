@@ -1,0 +1,83 @@
+.menu-bar {
+    flex-direction: row;
+    height: 32px;
+    border-bottom-width: 1px;
+}
+
+.menu-root {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.menu-panel {
+    position: absolute;
+    top: 32px;
+    left: 0;
+
+    flex-direction: column;
+    display: none;
+    min-width: 180px;
+
+    border-width: 1px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.submenu-root {
+    position: relative;
+}
+
+.submenu-panel {
+    top: -4px;
+    left: 100%;
+}
+
+.menu-item {
+    justify-content: flex-start;
+    align-items: center;
+
+    height: 30px;
+    padding-left: 14px;
+    padding-right: 14px;
+
+    font-size: 12px;
+    -unity-text-align: middle-left;
+    -unity-font-style: normal;
+
+    border-width: 0;
+}
+
+.menu-bar-separator {
+    width: 1px;
+    height: 18px;
+    margin-left: 6px;
+    margin-right: 6px;
+    align-self: center;
+    border-width: 0;
+}
+
+.menu-item-separator {
+    height: 1px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.menu-bar-icon {
+    width: 32px;
+    height: 32px;
+
+    padding-left: 0;
+    padding-right: 0;
+    border-width: 0;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.menu-item-disabled:hover {
+    background-color: transparent;
+}

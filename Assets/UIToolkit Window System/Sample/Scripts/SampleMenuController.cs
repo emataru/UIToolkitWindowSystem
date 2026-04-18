@@ -11,6 +11,7 @@ namespace UIToolkitWindowSystem
         [Header("Target Controllers")]
         [SerializeField] private SampleToolWindowController sampleToolWindowController;
         [SerializeField] private DialogController dialogController;
+        [SerializeField] private WindowThemeController themeController;
 
         private MenuBuilder _menu;
 
@@ -66,6 +67,13 @@ namespace UIToolkitWindowSystem
                 _menu.MenuItem("Focus Sample Tool", OnFocusSampleTool);
                 _menu.MenuItem("Close Sample Tool", OnCloseSampleTool);
 
+                _menu.EndMenu();
+            }
+
+            if(_menu.BeginMenu("Theme"))
+            {
+                _menu.MenuItem("Dark Theme", () => themeController.ApplyTheme(WindowThemeKind.Dark));
+                _menu.MenuItem("Light Theme", () => themeController.ApplyTheme(WindowThemeKind.Light));
                 _menu.EndMenu();
             }
 

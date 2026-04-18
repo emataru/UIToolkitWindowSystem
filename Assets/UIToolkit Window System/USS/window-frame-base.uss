@@ -1,0 +1,39 @@
+.window-titlebar {
+    height: 32px;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 8px;
+    padding-right: 0;
+    flex-shrink: 0;
+}
+
+.window-title {
+    flex-grow: 0;
+    flex-shrink: 1;
+    font-size: 12px;
+    -unity-font-style: normal;
+    -unity-text-align: middle-left;
+}
+
+.window-title-spacer {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.window-close-button {
+    width: 46px;
+    min-width: 46px;
+    height: 32px;
+
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    margin-left: 0;
+    margin-right: 0;
+
+    padding-left: 0;
+    padding-right: 0;
+
+    border-width: 0;
+    -unity-text-align: middle-center;
+}

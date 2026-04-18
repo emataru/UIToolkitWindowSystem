@@ -446,6 +446,7 @@ GameObject:
   - component: {fileID: 1782278212}
   - component: {fileID: 1782278215}
   - component: {fileID: 1782278214}
+  - component: {fileID: 1782278216}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -535,9 +536,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIToolkitWindowSystem.MenuWindowController
   uiDocument: {fileID: 1782278208}
   styleSheets:
-  - {fileID: 7433441132597879392, guid: 7545e5fd292ad4a47a845a8828338142, type: 3}
+  - {fileID: 7433441132597879392, guid: ddaa21e62abb5ae40b0774c7f29cebde, type: 3}
   sampleToolWindowController: {fileID: 1782278212}
   dialogController: {fileID: 1782278215}
+  themeController: {fileID: 1782278216}
 --- !u!114 &1782278215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -551,6 +553,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIToolkitWindowSystem.DialogController
   host: {fileID: 1782278213}
+--- !u!114 &1782278216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782278207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f6fe8351f56c1248a868423f0fe6974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIToolkitWindowSystem.WindowThemeController
+  uiDocument: {fileID: 1782278208}
+  themeAssets: {fileID: 11400000, guid: f2b28820761f35d4f8fd7919d7409d25, type: 2}
+  initialTheme: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
