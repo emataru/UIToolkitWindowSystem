@@ -1,5 +1,5 @@
 .window-titlebar {
-    height: 32px;
+    height: 24px;
     flex-direction: row;
     align-items: center;
     padding-left: 8px;
@@ -10,7 +10,6 @@
 .window-title {
     flex-grow: 0;
     flex-shrink: 1;
-    font-size: 12px;
     -unity-font-style: normal;
     -unity-text-align: middle-left;
 }
@@ -21,9 +20,9 @@
 }
 
 .window-close-button {
-    width: 46px;
-    min-width: 46px;
-    height: 32px;
+    width: 32px;
+    min-width: 32px;
+    height: 24px;
 
     flex-grow: 0;
     flex-shrink: 0;
