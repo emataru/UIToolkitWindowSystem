@@ -21,7 +21,7 @@ namespace UIToolkitWindowSystem
             {
                 Title = "Sample Tool Window",
                 Width = 460,
-                Height = 320,
+                Height = 620,
                 MinWidth = 320,
                 MinHeight = 220,
                 Closable = true,
