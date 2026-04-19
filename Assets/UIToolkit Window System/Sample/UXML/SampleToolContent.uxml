@@ -34,19 +34,17 @@
                           choices="Item A,Item B,Item C,Item D"
                           style="margin-top: 12px;" />
 
-        <ui:Label text="ListBox"
+        <ui:Label text="ListView"
                   style="margin-top: 14px; unity-font-style: bold;" />
         <ui:ListView name="sample-listbox"
                      selection-type="Single"
-                     fixed-item-height="22"
                      style="height: 120px;" />
 
         <ui:Label text="TreeView"
                   style="margin-top: 14px; unity-font-style: bold;" />
         <ui:TreeView name="sample-treeview"
-                     fixed-item-height="22"
                      selection-type="Single"
-                     style="height: 180px;" />
+                     style="height: 120px;" />
 
         <ui:VisualElement name="button-row"
                           style="flex-direction: row; margin-top: 12px;">

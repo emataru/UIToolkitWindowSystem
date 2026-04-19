@@ -1,5 +1,13 @@
 :root {
-    font-size: 10px;
+    font-size: 12px;
+}
+
+.window-title {
+    font-size: 12px;
+}
+
+.menu-item {
+    font-size: 12px;
 }
 
 /* =========================
@@ -13,10 +21,6 @@
     border-color: rgba(255, 255, 255, 0.10);
     border-width: 1px;
     border-radius: 8px;
-}
-
-.window-title {
-    font-size: 10px;
 }
 
 .window-titlebar {
@@ -69,7 +73,6 @@
 }
 
 .menu-item {
-    font-size: 10px;
     color: rgb(243, 243, 243);
     background-color: transparent;
     border-radius: 0px;
@@ -108,17 +111,8 @@ Button {
     background-color: rgb(58, 58, 60);
     color: rgb(243, 243, 243);
 
-    border-left-color: rgba(255, 255, 255, 0.08);
-    border-right-color: rgba(255, 255, 255, 0.08);
-    border-top-color: rgba(255, 255, 255, 0.08);
-    border-bottom-color: rgba(255, 255, 255, 0.08);
-
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
-
-    height: 24px;
+    border-color: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
 }
 
 Button:hover {
@@ -144,8 +138,6 @@ Label {
 
 TextField {
     color: rgb(243, 243, 243);
-    height: 24px;
-    min-height: 24px;
 }
 
 TextField > .unity-label {
@@ -157,33 +149,18 @@ TextField > .unity-text-input {
     background-color: rgb(45, 45, 45);
     color: rgb(243, 243, 243);
 
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-left: 8px;
-    padding-right: 8px;
-
     -unity-text-align: middle-left;
 
     --unity-cursor-color: rgb(255, 255, 255);
     caret-color: rgb(255, 255, 255);
 
-    border-left-color: rgba(255, 255, 255, 0.15);
-    border-right-color: rgba(255, 255, 255, 0.15);
-    border-top-color: rgba(255, 255, 255, 0.15);
-    border-bottom-color: rgba(255, 255, 255, 0.15);
-
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
+    border-color: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
 }
 
 TextField:focus-within > .unity-base-text-field__input,
 TextField:focus-within > .unity-text-input {
-    border-left-color: rgb(96, 165, 250);
-    border-right-color: rgb(96, 165, 250);
-    border-top-color: rgb(96, 165, 250);
-    border-bottom-color: rgb(96, 165, 250);
+    border-color: rgb(96, 165, 250);
 
     --unity-cursor-color: rgb(255, 255, 255);
     caret-color: rgb(255, 255, 255);
@@ -215,13 +192,6 @@ Toggle:checked > .unity-checkmark {
     background-color: rgb(96, 165, 250);
 }
 
-Toggle .unity-toggle__checkmark {
-    width: 14px;
-    height: 14px;
-    min-width: 14px;
-    min-height: 14px;
-}
-
 /* =========================
    ScrollView
    ========================= */
@@ -250,22 +220,12 @@ ScrollView > .unity-scroll-view__content-container {
     background-color: rgb(45, 45, 45);
     color: rgb(243, 243, 243);
 
-    border-left-color: rgba(255, 255, 255, 0.15);
-    border-right-color: rgba(255, 255, 255, 0.15);
-    border-top-color: rgba(255, 255, 255, 0.15);
-    border-bottom-color: rgba(255, 255, 255, 0.15);
-
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
+    border-color: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
 }
 
 .unity-base-popup-field:focus-within > .unity-base-popup-field__input {
-    border-left-color: rgb(96, 165, 250);
-    border-right-color: rgb(96, 165, 250);
-    border-top-color: rgb(96, 165, 250);
-    border-bottom-color: rgb(96, 165, 250);
+    border-color: rgb(96, 165, 250);
 }
 
     /* =========================
@@ -282,7 +242,6 @@ RadioButtonGroup > .unity-label {
 
 RadioButton {
     color: rgb(243, 243, 243);
-    min-height: 20px;
 }
 
 RadioButton > .unity-label {
@@ -291,12 +250,7 @@ RadioButton > .unity-label {
 
 RadioButton > .unity-radio-button__checkmark {
     background-color: rgb(45, 45, 45);
-
-    border-left-color: rgba(255, 255, 255, 0.15);
-    border-right-color: rgba(255, 255, 255, 0.15);
-    border-top-color: rgba(255, 255, 255, 0.15);
-    border-bottom-color: rgba(255, 255, 255, 0.15);
-
+    border-color: rgba(255, 255, 255, 0.15);
     border-radius: 999px;
 }
 
@@ -305,10 +259,7 @@ RadioButton:checked > .unity-radio-button__checkmark {
 }
 
 RadioButton:focus-within > .unity-radio-button__checkmark {
-    border-left-color: rgb(96, 165, 250);
-    border-right-color: rgb(96, 165, 250);
-    border-top-color: rgb(96, 165, 250);
-    border-bottom-color: rgb(96, 165, 250);
+    border-color: rgb(96, 165, 250);
 }
 
 /* =========================
@@ -317,8 +268,6 @@ RadioButton:focus-within > .unity-radio-button__checkmark {
 
 DropdownField {
     color: rgb(243, 243, 243);
-    height: 24px;
-    min-height: 24px;
 }
 
 DropdownField > .unity-label {
@@ -329,28 +278,12 @@ DropdownField > .unity-base-popup-field__input {
     background-color: rgb(45, 45, 45);
     color: rgb(243, 243, 243);
 
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-left: 8px;
-    padding-right: 8px;
-
-
-    border-left-color: rgba(255, 255, 255, 0.15);
-    border-right-color: rgba(255, 255, 255, 0.15);
-    border-top-color: rgba(255, 255, 255, 0.15);
-    border-bottom-color: rgba(255, 255, 255, 0.15);
-
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
+    border-color: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
 }
 
 DropdownField:focus-within > .unity-base-popup-field__input {
-    border-left-color: rgb(96, 165, 250);
-    border-right-color: rgb(96, 165, 250);
-    border-top-color: rgb(96, 165, 250);
-    border-bottom-color: rgb(96, 165, 250);
+    border-color: rgb(96, 165, 250);
 }
 
 /* =========================
@@ -374,7 +307,6 @@ ListView > .unity-scroll-view__content-container {
 }
 
 ListView .unity-collection-view__item {
-    min-height: 22px;
     color: rgb(243, 243, 243);
     background-color: transparent;
 
@@ -417,7 +349,6 @@ TreeView > .unity-scroll-view__content-container {
 }
 
 TreeView .unity-collection-view__item {
-    min-height: 22px;
     color: rgb(243, 243, 243);
     background-color: transparent;
 }
@@ -434,9 +365,4 @@ TreeView .unity-collection-view__item--selected {
 TreeView .unity-toggle__checkmark {
     margin-right: 0px;
     -unity-background-image-tint-color: rgb(255, 255, 255);
-    width: 16px;
-    height: 16px;
-    min-width: 16px;
-    min-height: 16px;
-
 }

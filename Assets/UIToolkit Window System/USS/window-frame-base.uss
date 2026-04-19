@@ -91,18 +91,3 @@
 .unity-radio-button-group__container {
     flex-direction: row;
 }
-
-.unity-radio-button__checkmark {
-    width: 8px;
-    height: 8px;
-    min-width: 8px;
-    min-height: 8px;
-}
-
-.unity-radio-button__checkmark-background {
-    width: 16px;
-    height: 16px;
-    min-width: 16px;
-    min-height: 16px;
-    padding-top: 4px;
-}
