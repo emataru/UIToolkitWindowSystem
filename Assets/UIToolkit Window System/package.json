@@ -1,0 +1,7 @@
+﻿{
+  "name": "net.emama.uitoolkit-window-system",
+  "version": "0.1.0",
+  "displayName": "UIToolkitWindowSystem",
+  "description": "unity UIToolkit Window System",
+  "unity": "2022.1"
+}
