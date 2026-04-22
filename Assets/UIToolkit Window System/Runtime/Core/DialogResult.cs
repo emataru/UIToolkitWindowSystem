@@ -1,4 +1,4 @@
-namespace UIToolkitWindowSystem
+﻿namespace UIToolkitWindowSystem
 {
     public enum DialogResult
     {

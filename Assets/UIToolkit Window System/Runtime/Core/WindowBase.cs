@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -28,10 +28,10 @@ namespace UIToolkitWindowSystem
             Options = options ?? throw new ArgumentNullException(nameof(options));
             if (frameUxml == null) throw new ArgumentNullException(nameof(frameUxml));
 
-            // ‚Ü‚¸ CloneTree ‚·‚é
+            // ã¾ãš CloneTree ã™ã‚‹
             var tree = frameUxml.CloneTree();
 
-            // ÀÛ‚ÌƒEƒBƒ“ƒhƒE–{‘Ì‚ğæ“¾
+            // å®Ÿéš›ã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦æœ¬ä½“ã‚’å–å¾—
             Root = tree.Q<VisualElement>("window-root");
             if (Root == null)
             {

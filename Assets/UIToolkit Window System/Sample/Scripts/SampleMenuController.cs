@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace UIToolkitWindowSystem
@@ -97,12 +97,12 @@ namespace UIToolkitWindowSystem
 
         private void OnShowMessage()
         {
-            dialogController?.ShowMessage("Message", "ƒƒjƒ…[‚©‚ç•\¦‚µ‚½ MessageBox ‚Å‚·B");
+            dialogController?.ShowMessage("Message", "ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‹ã‚‰è¡¨ç¤ºã—ãŸ MessageBox ã§ã™ã€‚");
         }
 
         private void OnShowConfirm()
         {
-            dialogController?.ShowConfirm("Confirm", "ƒƒjƒ…[‚©‚ç•\¦‚µ‚½ ConfirmDialog ‚Å‚·B");
+            dialogController?.ShowConfirm("Confirm", "ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‹ã‚‰è¡¨ç¤ºã—ãŸ ConfirmDialog ã§ã™ã€‚");
         }
 
         private void OnExit()

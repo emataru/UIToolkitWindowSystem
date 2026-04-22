@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -12,7 +12,7 @@ namespace UIToolkitWindowSystem
 
         private SampleToolWindow _window;
 
-        // ƒTƒ“ƒvƒ‹ƒf[ƒ^
+        // ã‚µãƒ³ãƒ—ãƒ«ãƒ‡ãƒ¼ã‚¿
         private readonly List<string> _dropdownChoices = new()
         {
             "Item A",
@@ -90,8 +90,8 @@ namespace UIToolkitWindowSystem
 
             Context.WindowManager.Open(_window);
 
-            // Open’¼Œã‚ÉVisualTree‚ªæ‚ê‚éİŒv‚È‚ç‚±‚ê‚ÅOK
-            // ‚à‚µ‚Ü‚¾¶¬‘O‚È‚ç schedule ‚Å1ƒtƒŒ[ƒ€Œã‚ÉŒÄ‚ñ‚Å‚­‚¾‚³‚¢
+            // Openç›´å¾Œã«VisualTreeãŒå–ã‚Œã‚‹è¨­è¨ˆãªã‚‰ã“ã‚Œã§OK
+            // ã‚‚ã—ã¾ã ç”Ÿæˆå‰ãªã‚‰ schedule ã§1ãƒ•ãƒ¬ãƒ¼ãƒ å¾Œã«å‘¼ã‚“ã§ãã ã•ã„
             RefreshWindowData();
         }
 
@@ -116,7 +116,7 @@ namespace UIToolkitWindowSystem
             if (_window == null || !_window.IsOpen)
                 return;
 
-            // ‚±‚±‚Í‚ ‚È‚½‚Ì SampleToolWindow À‘•‚É‡‚í‚¹‚Ä•ÏX
+            // ã“ã“ã¯ã‚ãªãŸã® SampleToolWindow å®Ÿè£…ã«åˆã‚ã›ã¦å¤‰æ›´
             var root = _window.Root;
             if (root == null)
             {
