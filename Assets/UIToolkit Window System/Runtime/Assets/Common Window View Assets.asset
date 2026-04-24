@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58fbbc8c607f1ad48ba0f09831ed580a, type: 3}
+  m_Name: Common Window View Assets
+  m_EditorClassIdentifier: Assembly-CSharp::UIToolkitWindowSystem.CommonWindowViewAssets
+  WindowFrameUxml: {fileID: 9197481963319205126, guid: f4f9136c3125aca4884a80e5754dee41, type: 3}
+  WindowFrameStyleSheet: {fileID: 7433441132597879392, guid: 56891311a18a04c45bacb5aff41ad373, type: 3}
+  MessageBoxContentUxml: {fileID: 9197481963319205126, guid: fd60c1d09c7597a4ea230871683eae5b, type: 3}
+  ConfirmDialogContentUxml: {fileID: 9197481963319205126, guid: b05e03a30c636c64fb7edddcf3f3a5f1, type: 3}

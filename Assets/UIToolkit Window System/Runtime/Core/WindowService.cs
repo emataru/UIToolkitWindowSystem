@@ -1,17 +1,15 @@
-using System.Threading;
+﻿using System.Threading;
 using Cysharp.Threading.Tasks;
 
 namespace UIToolkitWindowSystem
 {
     public sealed class WindowService
     {
-        private readonly WindowManager _windowManager;
-        private readonly WindowViewAssets _viewAssets;
+        private readonly WindowContext _context;
 
-        public WindowService(WindowManager windowManager, WindowViewAssets viewAssets)
+        public WindowService(WindowContext context)
         {
-            _windowManager = windowManager;
-            _viewAssets = viewAssets;
+            _context = context;
         }
 
         public async UniTask<DialogResult> ShowMessageAsync(
@@ -19,8 +17,8 @@ namespace UIToolkitWindowSystem
             string message,
             CancellationToken cancellationToken = default)
         {
-            var dialog = new MessageBoxWindow(title, message, _viewAssets.MessageBoxUxml);
-            _windowManager.OpenModal(dialog);
+            var dialog = new MessageBoxWindow(_context, title, message);
+            _context.WindowManager.OpenModal(dialog);
             return await dialog.WaitForResultAsync(cancellationToken);
         }
 
@@ -29,8 +27,8 @@ namespace UIToolkitWindowSystem
             string message,
             CancellationToken cancellationToken = default)
         {
-            var dialog = new ConfirmDialogWindow(title, message, _viewAssets.ConfirmDialogUxml);
-            _windowManager.OpenModal(dialog);
+            var dialog = new ConfirmDialogWindow(_context, title, message);
+            _context.WindowManager.OpenModal(dialog);
             return await dialog.WaitForResultAsync(cancellationToken);
         }
 

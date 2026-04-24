@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67386984c838c643b92e179331a8caf, type: 3}
+  m_Name: Window Theme Assets
+  m_EditorClassIdentifier: Assembly-CSharp::UIToolkitWindowSystem.WindowThemeAssets
+  DarkThemeStyleSheets:
+  - {fileID: 7433441132597879392, guid: b2c502467561a9b4a995bf7b0259d643, type: 3}
+  LightThemeStyleSheets:
+  - {fileID: 7433441132597879392, guid: 6bbb76dc42ed9964199779bd4f328046, type: 3}

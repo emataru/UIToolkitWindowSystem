@@ -1,4 +1,4 @@
-namespace UIToolkitWindowSystem
+﻿namespace UIToolkitWindowSystem
 {
     public interface IDialogSubmitHandler
     {

@@ -1,0 +1,371 @@
+:root {
+    font-size: 12px;
+}
+
+.window-title {
+    font-size: 12px;
+}
+
+.menu-item {
+    font-size: 12px;
+}
+
+/* =========================
+   Window
+   ========================= */
+
+.window {
+    background-color: rgb(32, 32, 32);
+    color: rgb(243, 243, 243);
+
+    border-color: rgba(255, 255, 255, 0.10);
+    border-width: 1px;
+    border-radius: 8px;
+
+    height: 100%;
+}
+
+.window-titlebar {
+    background-color: rgb(39, 39, 39);
+
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.window-close-button {
+    background-color: transparent;
+    color: rgb(243, 243, 243);
+
+    border-width: 0;
+
+    border-top-left-radius: 0;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    font-size: 18px;
+}
+
+.window-close-button:hover {
+    background-color: rgb(232, 17, 35);
+    color: white;
+}
+
+.window-resize-handle {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
+}
+
+/* =========================
+   Menu
+   ========================= */
+
+.menu-bar {
+    background-color: rgb(39, 39, 39);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.menu-panel {
+    background-color: rgba(44, 44, 46, 0.98);
+    border-color: rgba(255, 255, 255, 0.10);
+}
+
+.menu-item {
+    color: rgb(243, 243, 243);
+    background-color: transparent;
+    border-radius: 0px;
+    margin: 0px;
+}
+
+.menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.menu-item-disabled {
+    color: rgba(243, 243, 243, 0.38);
+}
+
+.menu-bar-separator {
+    background-color: rgba(255, 255, 255, 0.10);
+}
+
+.menu-item-separator {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.menu-bar-icon {
+    background-color: transparent;
+}
+
+.menu-bar-icon:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* =========================
+   Buttons
+   ========================= */
+
+Button {
+    background-color: rgb(58, 58, 60);
+    color: rgb(243, 243, 243);
+
+    border-color: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+}
+
+Button:hover {
+    background-color: rgb(72, 72, 74);
+}
+
+Button:disabled {
+    color: rgba(243, 243, 243, 0.38);
+    background-color: rgb(48, 48, 48);
+}
+
+/* =========================
+   Labels
+   ========================= */
+
+Label {
+    color: rgb(243, 243, 243);
+}
+
+/* =========================
+   TextField
+   ========================= */
+
+TextField {
+    color: rgb(243, 243, 243);
+}
+
+TextField > .unity-label {
+    color: rgb(243, 243, 243);
+}
+
+TextField > .unity-base-text-field__input,
+TextField > .unity-text-input {
+    background-color: rgb(45, 45, 45);
+    color: rgb(243, 243, 243);
+
+    -unity-text-align: middle-left;
+
+    --unity-cursor-color: rgb(255, 255, 255);
+    caret-color: rgb(255, 255, 255);
+
+    border-color: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
+
+TextField:focus-within > .unity-base-text-field__input,
+TextField:focus-within > .unity-text-input {
+    border-color: rgb(96, 165, 250);
+
+    --unity-cursor-color: rgb(255, 255, 255);
+    caret-color: rgb(255, 255, 255);
+}
+
+TextField > .unity-base-text-field__input--placeholder,
+TextField > .unity-text-input.unity-base-text-field__input--placeholder {
+    color: rgba(243, 243, 243, 0.5);
+}
+
+/* =========================
+   Toggle
+   ========================= */
+
+Toggle {
+    color: rgb(243, 243, 243);
+}
+
+Toggle > .unity-label {
+    color: rgb(243, 243, 243);
+}
+
+Toggle > .unity-checkmark {
+    background-color: rgb(45, 45, 45);
+    border-color: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
+
+Toggle:checked > .unity-checkmark {
+    background-color: rgb(96, 165, 250);
+}
+
+/* =========================
+   ScrollView
+   ========================= */
+
+ScrollView {
+    background-color: transparent;
+}
+
+ScrollView > .unity-scroll-view__content-container {
+    background-color: transparent;
+}
+
+/* =========================
+   PopupField / Dropdown
+   ========================= */
+
+.unity-base-popup-field {
+    color: rgb(243, 243, 243);
+}
+
+.unity-base-popup-field > .unity-label {
+    color: rgb(243, 243, 243);
+}
+
+.unity-base-popup-field__input {
+    background-color: rgb(45, 45, 45);
+    color: rgb(243, 243, 243);
+
+    border-color: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
+
+.unity-base-popup-field:focus-within > .unity-base-popup-field__input {
+    border-color: rgb(96, 165, 250);
+}
+
+    /* =========================
+   RadioButton / RadioButtonGroup
+   ========================= */
+
+RadioButtonGroup {
+    color: rgb(243, 243, 243);
+}
+
+RadioButtonGroup > .unity-label {
+    color: rgb(243, 243, 243);
+}
+
+RadioButton {
+    color: rgb(243, 243, 243);
+}
+
+RadioButton > .unity-label {
+    color: rgb(243, 243, 243);
+}
+
+RadioButton > .unity-radio-button__checkmark {
+    background-color: rgb(45, 45, 45);
+    border-color: rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+}
+
+RadioButton:checked > .unity-radio-button__checkmark {
+    background-color: rgb(96, 165, 250);
+}
+
+RadioButton:focus-within > .unity-radio-button__checkmark {
+    border-color: rgb(96, 165, 250);
+}
+
+/* =========================
+   DropdownField
+   ========================= */
+
+DropdownField {
+    color: rgb(243, 243, 243);
+}
+
+DropdownField > .unity-label {
+    color: rgb(243, 243, 243);
+}
+
+DropdownField > .unity-base-popup-field__input {
+    background-color: rgb(45, 45, 45);
+    color: rgb(243, 243, 243);
+
+    border-color: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
+
+DropdownField:focus-within > .unity-base-popup-field__input {
+    border-color: rgb(96, 165, 250);
+}
+
+/* =========================
+   ListView
+   ========================= */
+
+ListView {
+    background-color: rgb(45, 45, 45);
+    color: rgb(243, 243, 243);
+    border-color: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    border-width: 1px;
+}
+
+ListView:focus-within {
+    border-color: rgb(96, 165, 250);
+}
+
+ListView > .unity-scroll-view__content-container {
+    background-color: transparent;
+}
+
+ListView .unity-collection-view__item {
+    color: rgb(243, 243, 243);
+    background-color: transparent;
+
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+ListView .unity-collection-view__item:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+ListView .unity-collection-view__item--selected {
+    background-color: rgba(96, 165, 250, 0.30);
+    color: rgb(255, 255, 255);
+}
+
+ListView .unity-collection-view__item {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* =========================
+   TreeView
+   ========================= */
+
+TreeView {
+    background-color: rgb(45, 45, 45);
+    color: rgb(243, 243, 243);
+    border-color: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    border-width: 1px;
+}
+
+TreeView:focus-within {
+    border-color: rgb(96, 165, 250);
+}
+
+TreeView > .unity-scroll-view__content-container {
+    background-color: transparent;
+}
+
+TreeView .unity-collection-view__item {
+    color: rgb(243, 243, 243);
+    background-color: transparent;
+}
+
+TreeView .unity-collection-view__item:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+TreeView .unity-collection-view__item--selected {
+    background-color: rgba(96, 165, 250, 0.30);
+    color: rgb(255, 255, 255);
+}
+
+TreeView .unity-toggle__checkmark {
+    margin-right: 0px;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+}

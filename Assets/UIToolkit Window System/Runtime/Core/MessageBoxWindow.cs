@@ -1,16 +1,14 @@
-using UnityEngine.UIElements;
+﻿using UnityEngine.UIElements;
 
 namespace UIToolkitWindowSystem
 {
     public sealed class MessageBoxWindow : DialogWindow<DialogResult>
     {
         private readonly string _message;
-        private readonly VisualTreeAsset _uxml;
-
         private Button _okButton;
 
-        public MessageBoxWindow(string title, string message, VisualTreeAsset uxml)
-            : base(new WindowOptions
+        public MessageBoxWindow(WindowContext context, string title, string message)
+            : base(context, new WindowOptions
             {
                 Title = title,
                 Width = 360,
@@ -19,20 +17,22 @@ namespace UIToolkitWindowSystem
                 MinHeight = 140,
                 Closable = true,
                 Draggable = true,
-                Resizable = false,
+                Resizable = true,
                 CloseOnEscape = true,
                 CenterOnOpen = true
             })
         {
             _message = message;
-            _uxml = uxml;
-
             BuildDialogContent();
         }
 
         private void BuildDialogContent()
         {
-            var tree = CloneContentTree(_uxml);
+            var tree = CloneContentTree(Context.CommonViews.MessageBoxContentUxml);
+            tree.style.flexGrow = 1;
+            tree.style.flexShrink = 1;
+            tree.style.minHeight = 0;
+
             ContentRoot.Add(tree);
 
             var messageLabel = ContentRoot.Q<Label>("message-label");
@@ -42,10 +42,7 @@ namespace UIToolkitWindowSystem
                 messageLabel.text = _message;
 
             if (_okButton != null)
-            {
-                _okButton.style.minWidth = 70;
                 _okButton.clicked += () => Complete(DialogResult.OK);
-            }
         }
 
         protected override bool TryHandleSubmitKey()

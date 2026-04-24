@@ -1,15 +1,19 @@
-using System.Threading;
+﻿using System.Threading;
 using Cysharp.Threading.Tasks;
 
 namespace UIToolkitWindowSystem
 {
     public abstract class DialogWindow<TResult> : ModalWindowBase, IDialogSubmitHandler
     {
+        protected WindowContext Context { get; }
+
         private UniTaskCompletionSource<TResult> _tcs;
         private bool _completed;
 
-        protected DialogWindow(WindowOptions options) : base(options)
+        protected DialogWindow(WindowContext context, WindowOptions options)
+            : base(options, context.CommonViews.WindowFrameUxml)
         {
+            Context = context;
         }
 
         public UniTask<TResult> WaitForResultAsync(CancellationToken cancellationToken = default)
