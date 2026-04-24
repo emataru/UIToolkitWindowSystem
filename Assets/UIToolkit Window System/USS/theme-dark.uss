@@ -21,6 +21,8 @@
     border-color: rgba(255, 255, 255, 0.10);
     border-width: 1px;
     border-radius: 8px;
+
+    height: 100%;
 }
 
 .window-titlebar {
@@ -166,7 +168,8 @@ TextField:focus-within > .unity-text-input {
     caret-color: rgb(255, 255, 255);
 }
 
-TextField::placeholder {
+TextField > .unity-base-text-field__input--placeholder,
+TextField > .unity-text-input.unity-base-text-field__input--placeholder {
     color: rgba(243, 243, 243, 0.5);
 }
 

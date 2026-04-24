@@ -17,7 +17,7 @@ namespace UIToolkitWindowSystem
                 MinHeight = 140,
                 Closable = true,
                 Draggable = true,
-                Resizable = false,
+                Resizable = true,
                 CloseOnEscape = true,
                 CenterOnOpen = true
             })
@@ -29,6 +29,10 @@ namespace UIToolkitWindowSystem
         private void BuildDialogContent()
         {
             var tree = CloneContentTree(Context.CommonViews.MessageBoxContentUxml);
+            tree.style.flexGrow = 1;
+            tree.style.flexShrink = 1;
+            tree.style.minHeight = 0;
+
             ContentRoot.Add(tree);
 
             var messageLabel = ContentRoot.Q<Label>("message-label");

@@ -6,7 +6,7 @@
             <ui:Button name="close-button" class="window-close-button" text="×" />
         </ui:VisualElement>
 
-        <ui:VisualElement name="content-root" class="window-content" />
+        <ui:VisualElement name="content-root" class="window-content" style="flex-grow: 1;"/>
 
         <ui:VisualElement name="resize-handle" class="window-resize-handle" />
     </ui:VisualElement>

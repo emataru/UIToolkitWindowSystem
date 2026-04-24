@@ -41,6 +41,10 @@ namespace UIToolkitWindowSystem
         private void BuildWindowContent()
         {
             var tree = CloneContentTree(_contentUxml);
+            tree.style.flexGrow = 1;
+            tree.style.flexShrink = 1;
+            tree.style.minHeight = 0;
+
             ContentRoot.Add(tree);
 
             _nameField = ContentRoot.Q<TextField>("name-field");
